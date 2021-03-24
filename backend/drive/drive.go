@@ -640,7 +640,7 @@ func (f *Fs) shouldRetry(err error) (bool, error) {
 
 	// added by me
 	default:
-        reason := err.msg
+        reason := err.Error()
         if reason == "Max transfer limit reached as set by --max-transfer" {
             // do something
             if(f.opt.ServiceAccountFilePath != ""){
