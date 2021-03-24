@@ -640,18 +640,16 @@ func (f *Fs) shouldRetry(err error) (bool, error) {
 
 	// added by me
 	default:
-		if len(gerr.Errors) > 0 {
-			reason := gerr.Errors[0].msg
-			if reason == "Max transfer limit reached as set by --max-transfer" {
-				// do something
-				if(f.opt.ServiceAccountFilePath != ""){
-					f.waitChangeSvc.Lock()
-					f.changeSvc()
-					f.waitChangeSvc.Unlock()
-					return true, err
-				}
-			}
-		}
+        reason := gerr.msg
+        if reason == "Max transfer limit reached as set by --max-transfer" {
+            // do something
+            if(f.opt.ServiceAccountFilePath != ""){
+                f.waitChangeSvc.Lock()
+                f.changeSvc()
+                f.waitChangeSvc.Unlock()
+                return true, err
+            }
+        }
 	// added by me
 	}
 	return false, err
