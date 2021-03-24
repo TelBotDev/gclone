@@ -637,6 +637,7 @@ func (f *Fs) shouldRetry(err error) (bool, error) {
 				return true, err
 			}
 		}
+
 	// added by me
 	case *errors.New:
 		if len(gerr.Errors) > 0 {
