@@ -637,7 +637,6 @@ func (f *Fs) shouldRetry(err error) (bool, error) {
 				return true, err
 			}
 		}
-
 	// added by me
 	default:
         reason := err.Error()
