@@ -639,7 +639,7 @@ func (f *Fs) shouldRetry(err error) (bool, error) {
 		}
 
 	// added by me
-	case *errors.New:
+	default:
 		if len(gerr.Errors) > 0 {
 			reason := gerr.Errors[0].msg
 			if reason == "Max transfer limit reached as set by --max-transfer" {
